@@ -213,7 +213,8 @@ func _process(delta: float) -> void:
 func _input_dir() -> Vector2:
 	if bot:
 		return _bot_dir()
-	return Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	var keys := Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	return keys if keys != Vector2.ZERO else hud.touch_dir()
 
 
 ## Test driver: plays like a person. Dodges what is close, otherwise grabs loot

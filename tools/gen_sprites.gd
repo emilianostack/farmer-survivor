@@ -154,6 +154,11 @@ func _world() -> void:
 	var wide = Px.new(480, 150)
 	W.key_art(wide, spr)
 	wide.to_image().save_png("res://store/keyart_wide.png")
+	# CrazyGames covers: landscape, portrait and square
+	for s in [[480, 270, "land"], [400, 600, "port"], [400, 400, "sq"]]:
+		var art = Px.new(s[0], s[1])
+		W.key_art(art, spr)
+		art.to_image().save_png("res://store/keyart_%s.png" % s[2])
 	# Application icon
 	var icon = Px.new(64, 64)
 	icon.rect(0, 0, 64, 64, Color("1a2a1c"))

@@ -128,7 +128,7 @@ func apply_settings() -> void:
 
 
 func _set_fullscreen(on: bool) -> void:
-	if DisplayServer.get_name() == "headless":
+	if DisplayServer.get_name() == "headless" or OS.has_feature("web"):
 		return
 	var mode := DisplayServer.WINDOW_MODE_FULLSCREEN if on else DisplayServer.WINDOW_MODE_WINDOWED
 	if DisplayServer.window_get_mode() != mode:
@@ -136,7 +136,8 @@ func _set_fullscreen(on: bool) -> void:
 
 
 func _notification(what: int) -> void:
-	if what == NOTIFICATION_WM_CLOSE_REQUEST and not d.is_empty():
+	var leaving := what == NOTIFICATION_WM_CLOSE_REQUEST or what == NOTIFICATION_APPLICATION_PAUSED or what == NOTIFICATION_WM_WINDOW_FOCUS_OUT
+	if leaving and not d.is_empty():  # phones kill background tabs without warning
 		save_game()
 
 

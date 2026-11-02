@@ -9,8 +9,8 @@ crops of Green Hollow, and old Hank is taking up his scythe.
 
 **Run locally:** run `build/FarmerSurvivors.exe`, or open this folder in Godot 4.7 and press F5.
 
-**Controls:** WASD, arrow keys or gamepad to move. Weapons fire on their own.
-Esc pauses. Enter, Space or mouse work in menus.
+**Controls:** WASD, arrow keys or gamepad to move, or drag on a touchscreen. Weapons fire on their own.
+Esc, P or the on-screen button pauses. Enter, Space, mouse or touch work in menus.
 
 **Languages:** English (default), Português (Brasil), Español, Français. Switch in
 Options. Text lives in `i18n/strings.csv`: add a column to add a language, then list it in
@@ -59,6 +59,7 @@ Include the font and Godot licence notices with every release. The web build nee
     godot --headless --path . -- --dev=eco                       # economy, prestige, save
     godot --headless --path . -- --dev=i18n                      # translation audit
     godot --headless --path . --fixed-fps 60 -- --dev=flow       # real input walkthrough
+    godot --headless --path . --fixed-fps 60 -- --dev=touch      # plays with fingers only
     godot --headless --path . --fixed-fps 60 -- --dev=bugs       # edge-case regressions
     godot --headless --path . --fixed-fps 60 -- --dev=chaos:1:10 # random stress: seed, rounds
     godot --headless --path . --fixed-fps 60 -- --dev=sim:0:0:hank:1:0   # bot plays a run

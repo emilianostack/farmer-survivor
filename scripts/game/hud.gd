@@ -17,6 +17,7 @@ var banner_label: Label
 var overlay: Control = null
 var _banner_tween: Tween
 var danger_rect: ColorRect
+var stick: TouchStick = null
 
 
 func setup(r: Node2D) -> void:
@@ -73,6 +74,25 @@ func setup(r: Node2D) -> void:
 	banner_label.size = Vector2(640, 44)
 	banner_label.modulate.a = 0.0
 	root.add_child(banner_label)
+	if UI.is_touch():
+		enable_touch()
+
+
+## Steering stick and an on-screen pause, for devices with no keyboard.
+func enable_touch() -> void:
+	stick = TouchStick.new()
+	root.add_child(stick)
+	var pause := UI.button("II", func():
+		if overlay == null and not run.finished and run.win_timer < 0.0:
+			open_pause(), Vector2(34, 34))
+	pause.position = Vector2(4, 32)
+	pause.focus_mode = Control.FOCUS_NONE
+	root.add_child(pause)
+	stick.blocked.append(pause)
+
+
+func touch_dir() -> Vector2:
+	return stick.dir if stick != null else Vector2.ZERO
 
 
 func _lab(p: Vector2, s: Vector2, al: int, size: int, col: Color = UI.COL_TEXT) -> Label:

@@ -83,7 +83,7 @@ class Story extends Control:
 		add_child(panel)
 		text = UI.wrapped("")
 		panel.add_child(text)
-		hint = UI.label(tr("STORY_HINT"), 16, UI.COL_MUTED, HORIZONTAL_ALIGNMENT_RIGHT)
+		hint = UI.label(tr("STORY_HINT_TOUCH" if UI.is_touch() else "STORY_HINT"), 16, UI.COL_MUTED, HORIZONTAL_ALIGNMENT_RIGHT)
 		hint.position = Vector2(14, 264)
 		hint.size = Vector2(612, 16)
 		hint.add_theme_constant_override("outline_size", 3)
@@ -217,7 +217,8 @@ class Options extends Control:
 		v.add_child(lb)
 		v.add_child(_slider(tr("OPT_MUSIC"), "music"))
 		v.add_child(_slider(tr("OPT_SFX"), "sfx"))
-		v.add_child(_toggle("OPT_FULLSCREEN", "fullscreen"))
+		if not OS.has_feature("web"):  # web portals provide their own fullscreen control
+			v.add_child(_toggle("OPT_FULLSCREEN", "fullscreen"))
 		v.add_child(_toggle("OPT_SHAKE", "shake"))
 		v.add_child(_toggle("OPT_NUMBERS", "numbers"))
 		var wipe := UI.button(tr("OPT_WIPE_SURE") if wipe_armed else tr("OPT_WIPE"), func():

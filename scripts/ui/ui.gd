@@ -14,6 +14,15 @@ static var _title: Font
 static var _theme: Theme
 
 
+## True on phones and tablets. Set by the test harness to exercise the touch layout.
+static var force_touch := false
+const TOUCH_MIN_HEIGHT := 30.0
+
+
+static func is_touch() -> bool:
+	return force_touch or DisplayServer.is_touchscreen_available()
+
+
 static func _crisp(path: String) -> FontFile:
 	var f: FontFile = load(path)
 	f.antialiasing = TextServer.FONT_ANTIALIASING_NONE
@@ -116,6 +125,10 @@ static func button(txt: String, fn: Callable, min_size := Vector2(0, 22)) -> But
 	var b := Button.new()
 	b.text = txt
 	b.custom_minimum_size = min_size
+	if is_touch():
+		b.custom_minimum_size.y = maxf(min_size.y, TOUCH_MIN_HEIGHT)
+		if min_size.x > 0.0:
+			b.custom_minimum_size.x = maxf(min_size.x, TOUCH_MIN_HEIGHT)
 	b.pressed.connect(func():
 		Audio.play("ui", 0.0)
 		fn.call())

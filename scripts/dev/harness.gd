@@ -28,6 +28,12 @@ func begin(m: Node, spec: String) -> void:
 			_chaos.call_deferred()
 		"flow":
 			_flow.call_deferred()
+		"covers":
+			_covers.call_deferred()
+		"trailer":
+			_trailer.call_deferred()
+		"touch":
+			_touch.call_deferred()
 		"i18n":
 			_i18n()
 		"shots":
@@ -74,6 +80,7 @@ func _wait(n: int) -> void:
 ## Walks the whole game and photographs every screen, for layout review.
 func _shots() -> void:
 	var loc: String = arg[2] if arg.size() > 2 else "en"
+	UI.force_touch = "touch" in arg
 	Save.d = Save._default()
 	Save.d.settings.locale = loc
 	Save.apply_settings()
@@ -296,6 +303,103 @@ func _press(action: String) -> void:
 	u.action = action
 	Input.parse_input_event(u)
 	await _wait(4)
+
+
+## Sends a finger event, given in game coordinates (640x360).
+func _finger(index: int, p: Vector2, pressed: bool) -> void:
+	var e := InputEventScreenTouch.new()
+	e.index = index
+	e.position = get_window().get_final_transform() * p
+	e.pressed = pressed
+	Input.parse_input_event(e)
+	Input.flush_buffered_events()
+	await _wait(2)
+
+
+func _finger_drag(index: int, p: Vector2) -> void:
+	var e := InputEventScreenDrag.new()
+	e.index = index
+	e.position = get_window().get_final_transform() * p
+	Input.parse_input_event(e)
+	Input.flush_buffered_events()
+	await _wait(2)
+
+
+## Plays a run with fingers only, the way a phone would.
+func _touch() -> void:
+	UI.force_touch = true
+	Save.d = Save._default()
+	Save.apply_settings()
+	main.show_title()
+	await _wait(6)
+	var play: Button = main.current.find_children("*", "Button", true, false)[0]
+	_ok(play.size.y >= UI.TOUCH_MIN_HEIGHT, "menu buttons are finger sized")
+	var center := play.get_global_rect().get_center()
+	await _finger(0, center, true)
+	await _finger(0, center, false)
+	await _wait(4)
+	_ok(main.current is Screens.Story, "tapping Play starts the story")
+	_ok(main.current.hint.text == tr("STORY_HINT_TOUCH"), "story hint talks about tapping")
+	for i in 12:
+		if not (main.current is Screens.Story):
+			break
+		await _finger(0, Vector2(320, 100), true)
+		await _finger(0, Vector2(320, 100), false)
+		await _wait(2)
+	_ok(not (main.current is Screens.Story), "tapping finishes the story")
+	await _wait(4)
+	main.start_run(0, 0, "hank", false)
+	await _wait(6)
+	var r = main.run
+	var stick: TouchStick = r.hud.stick
+	_ok(stick != null, "a run shows the stick on touch screens")
+	_ok(r._input_dir() == Vector2.ZERO, "no finger, no movement")
+	var from: Vector2 = r.player_pos
+	await _finger(0, Vector2(400, 200), true)
+	_ok(r._input_dir() == Vector2.ZERO, "touching without dragging does not move")
+	await _finger_drag(0, Vector2(440, 200))
+	_ok(r._input_dir().is_equal_approx(Vector2.RIGHT), "dragging right steers right at full speed")
+	await _wait(40)
+	_ok(r.player_pos.x > from.x + 20.0, "the stick walks the farmer")
+	await _finger(1, Vector2(100, 100), true)
+	await _finger_drag(1, Vector2(100, 200))
+	_ok(r._input_dir().is_equal_approx(Vector2.RIGHT), "a second finger does not hijack the stick")
+	await _finger(1, Vector2(100, 200), false)
+	_ok(r._input_dir().is_equal_approx(Vector2.RIGHT), "lifting a second finger keeps steering")
+	await _finger_drag(0, Vector2(300, 200))
+	_ok(r._input_dir().x < -0.9, "the base follows the thumb, so reversing is instant")
+	await _finger(0, Vector2(300, 200), false)
+	_ok(r._input_dir() == Vector2.ZERO, "lifting the finger stops the farmer")
+	var pause: Button = stick.blocked[0]
+	var at := pause.get_global_rect().get_center()
+	await _finger(0, at, true)
+	_ok(r._input_dir() == Vector2.ZERO, "the pause button does not grab the stick")
+	await _finger(0, at, false)
+	await _wait(4)
+	_ok(get_tree().paused and r.hud.overlay != null, "the pause button pauses")
+	var resume: Button = r.hud.overlay.find_children("*", "Button", true, false)[0]
+	var rc := resume.get_global_rect().get_center()
+	await _finger(0, rc, true)
+	await _finger(0, rc, false)
+	await _wait(4)
+	_ok(not get_tree().paused and r.hud.overlay == null, "tapping Resume closes the pause menu")
+	_ok(r._input_dir() == Vector2.ZERO, "no stale steering after the menu")
+	await _finger(0, Vector2(400, 200), true)
+	await _finger_drag(0, Vector2(440, 200))
+	r.gain_xp(40.0)
+	await _wait(6)
+	_ok(r.hud.overlay != null, "levelling up mid-drag opens the menu")
+	await _finger(0, Vector2(440, 200), false)
+	_ok(r._input_dir() == Vector2.ZERO, "lifting the finger during a menu clears the stick")
+	var card: Button = r.hud.overlay.find_children("*", "Button", true, false)[0]
+	var cc := card.get_global_rect().get_center()
+	await _finger(0, cc, true)
+	await _finger(0, cc, false)
+	await _wait(4)
+	_ok(r.hud.overlay == null or r.pending_levels > 0, "tapping a card picks it")
+	UI.force_touch = false
+	print("touch fails=", fails)
+	get_tree().quit()
 
 
 ## Plays the real flow through input events, the way a player would.
@@ -875,7 +979,7 @@ func _danger_tests() -> void:
 
 # --- Store page assets ------------------------------------------------------------
 
-func _logo_card(bg: String, size: Vector2i, one_line: bool, out: String) -> void:
+func _logo_card(bg: String, size: Vector2i, one_line: bool, out: String, zoom: int = 2) -> void:
 	var sv := SubViewport.new()
 	sv.size = size
 	sv.render_target_update_mode = SubViewport.UPDATE_ALWAYS
@@ -912,7 +1016,7 @@ func _logo_card(bg: String, size: Vector2i, one_line: bool, out: String) -> void
 	await RenderingServer.frame_post_draw
 	var shot := sv.get_texture().get_image()
 	shot.convert(Image.FORMAT_RGB8)
-	shot.resize(size.x * 2, size.y * 2, Image.INTERPOLATE_NEAREST)
+	shot.resize(size.x * zoom, size.y * zoom, Image.INTERPOLATE_NEAREST)
 	shot.save_png(out)
 	print("store ", out.get_file(), " ", shot.get_size())
 	sv.queue_free()
@@ -1005,4 +1109,51 @@ func _store() -> void:
 	main.current._set_tab("farm")
 	await _wait(8)
 	await _store_shot(d, "shot_8_farm")
+	get_tree().quit()
+
+
+## Web portal covers. `gen_sprites` must have written the keyart_* files first.
+func _covers() -> void:
+	var d := "C:" + arg[1]
+	await _logo_card(d + "/keyart_land.png", Vector2i(480, 270), false, d + "/cover_landscape.png", 4)
+	await _logo_card(d + "/keyart_port.png", Vector2i(400, 600), false, d + "/cover_portrait.png")
+	await _logo_card(d + "/keyart_sq.png", Vector2i(400, 400), false, d + "/cover_square.png")
+	get_tree().quit()
+
+
+## Real bot gameplay for preview videos, run with --write-movie. Nothing is sped up.
+func _trailer() -> void:
+	seed(2026)
+	Save.d = Save._default()
+	Save.d.seen_intro = true
+	for m in DB.META:
+		Save.d.meta[m.id] = min(4, int(m.max))
+	Save.d.settings.shake = false
+	Save.d.settings.music = 0.0
+	Save.d.settings.sfx = 0.0
+	Save.apply_settings()
+	main.start_run(1, 0, "hank", true)
+	var r = main.run
+	r.time = 300.0
+	r.next_elite = r.time + 6.0
+	r.next_swarm = r.time + 3.0
+	r.wave_i = 0
+	r.level = 22
+	r.xp_next = 99999.0
+	for id in ["scythe", "bees", "lightning", "tractor", "sickles"]:
+		if r.weapons.has_weapon(id) == null:
+			r.weapons.add_weapon(id)
+	for s in r.weapons.slots:
+		s.level = randi_range(4, 7)
+		r.weapons.refresh(s)
+	for id in ["hat", "boots", "whetstone"]:
+		r.weapons.add_passive(id)
+	r.hud.refresh_items()
+	for i in 90:
+		r.enemies.spawn(r.stage.waves[-1].pool.pick_random(), r.player_pos + Vector2.from_angle(randf() * TAU) * randf_range(120.0, 300.0))
+	var left := 19.0
+	while left > 0.0 and main.run != null:
+		r.hp = float(r.stats.max_hp) * 0.82
+		left -= get_process_delta_time()
+		await get_tree().process_frame
 	get_tree().quit()
