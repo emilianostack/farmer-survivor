@@ -1,0 +1,213 @@
+keys,en,pt_BR,es,fr
+GAME_TITLE,Farmer Survivors,Farmer Survivors,Farmer Survivors,Farmer Survivors
+GAME_TAGLINE,The harvest fights back.,A colheita revidou.,La cosecha contraataca.,La récolte se rebiffe.
+BTN_PLAY,Play,Jogar,Jugar,Jouer
+BTN_OPTIONS,Options,Opções,Opciones,Options
+BTN_QUIT,Quit,Sair,Salir,Quitter
+BTN_BACK,Back,Voltar,Volver,Retour
+BTN_START,Head out!,Partir!,¡En marcha!,En route !
+BTN_CONTINUE,Continue,Continuar,Continuar,Continuer
+BTN_RESUME,Resume,Retomar,Reanudar,Reprendre
+BTN_GIVEUP,Give up (keep coins),Desistir (manter moedas),Rendirse (conservar monedas),Abandonner (garder les pièces)
+TAB_EXPEDITION,Expedition,Expedição,Expedición,Expédition
+TAB_WORKSHOP,Workshop,Oficina,Taller,Atelier
+TAB_FARM,Farm,Fazenda,Granja,Ferme
+TAB_JOURNAL,Journal,Diário,Diario,Journal
+HUB_CHOOSE_FARMER,Choose your farmer,Escolha seu fazendeiro,Elige a tu granjero,Choisissez votre fermier
+HUB_CHOOSE_STAGE,Choose your field,Escolha o campo,Elige el campo,Choisissez le champ
+HUB_LOCKED,Locked,Bloqueado,Bloqueado,Verrouillé
+HUB_SELECTED,Selected,Escolhido,Elegido,Choisi
+HUB_RATE,+%s/s,+%s/s,+%s/s,+%s/s
+HUB_RAD,Radiation %d,Radiação %d,Radiación %d,Radiation %d
+WS_HINT,Permanent upgrades. Costs rise with every purchase.,Melhorias permanentes. O custo sobe a cada compra.,Mejoras permanentes. El coste sube con cada compra.,Améliorations permanentes. Le coût grimpe à chaque achat.
+WS_MAX,MAX,MÁX,MÁX,MAX
+FARM_EACH,+%s coins/s each,+%s moedas/s cada,+%s monedas/s cada uno,+%s pièces/s chacun
+FARM_REPLANT,Replant,Replantar,Replantar,Replanter
+FARM_REPLANT_D,"Bulldoze the farm and all coins for Clean Soil. Each Soil: +%d%% coins, +%d%% damage. Workshop stays.","Destrua a fazenda e as moedas em troca de Solo Limpo. Cada Solo: +%d%% moedas, +%d%% dano. A oficina fica.","Arrasa la granja y las monedas a cambio de Suelo Limpio. Cada Suelo: +%d%% monedas, +%d%% daño. El taller se queda.","Rasez la ferme et vos pièces pour de la Terre Saine. Chaque Terre : +%d%% pièces, +%d%% dégâts. L'atelier reste."
+FARM_SOIL,Clean Soil: %d,Solo Limpo: %d,Suelo Limpio: %d,Terre Saine : %d
+FARM_REPLANT_BTN,Replant (+%d),Replantar (+%d),Replantar (+%d),Replanter (+%d)
+OFFLINE_EARNED,Your farm earned %s coins while you were away!,Sua fazenda rendeu %s moedas enquanto você esteve fora!,¡Tu granja ganó %s monedas mientras no estabas!,Votre ferme a rapporté %s pièces en votre absence !
+JOURNAL_ENTRY,Entry %d,Página %d,Entrada %d,Page %d
+BLD_COOP,Chicken Coop,Galinheiro,Gallinero,Poulailler
+BLD_BARN,Dairy Barn,Estábulo,Establo,Étable
+BLD_SILO,Grain Silo,Silo de Grãos,Silo de Grano,Silo à Grain
+BLD_WINDMILL,Windmill,Moinho de Vento,Molino de Viento,Moulin à Vent
+BLD_GREENHOUSE,Greenhouse,Estufa,Invernadero,Serre
+BLD_LAB,Decon Lab,Lab. de Descontaminação,Lab. de Descontaminación,Labo de Décontamination
+META_MIGHT,Sharpening,Afiação,Afilado,Affûtage
+META_MIGHT_D,+5% damage on every weapon.,+5% de dano em todas as armas.,+5% de daño con todas las armas.,+5% de dégâts pour toutes les armes.
+META_VITALITY,Hearty Meals,Refeições Fartas,Comida Casera,Bons Repas
+META_VITALITY_D,+8 maximum health.,+8 de vida máxima.,+8 de vida máxima.,+8 PV maximum.
+META_ARMOR,Thick Denim,Jeans Grosso,Mezclilla Gruesa,Denim Épais
+META_ARMOR_D,Reduces damage taken by 1.,Reduz em 1 o dano recebido.,Reduce en 1 el daño recibido.,Réduit de 1 les dégâts subis.
+META_REGEN,Herbal Tea,Chá de Ervas,Té de Hierbas,Tisane
+META_REGEN_D,Recover 0.15 health per second.,Recupera 0.15 de vida por segundo.,Recupera 0.15 de vida por segundo.,Récupère 0.15 PV par seconde.
+META_SWIFT,Morning Jog,Corrida Matinal,Trote Matinal,Footing Matinal
+META_SWIFT_D,+3% movement speed.,+3% de velocidade.,+3% de velocidad.,+3% de vitesse.
+META_HASTE,Early Riser,Madrugador,Madrugador,Lève-tôt
+META_HASTE_D,-2% weapon cooldown.,-2% de recarga das armas.,-2% de recarga de armas.,-2% de recharge des armes.
+META_REACH,Long Arms,Braços Longos,Brazos Largos,Longs Bras
+META_REACH_D,+3% attack area.,+3% de área de ataque.,+3% de área de ataque.,+3% de zone d'attaque.
+META_AMOUNT,Extra Hands,Mãos Extras,Manos Extra,Mains en Plus
+META_AMOUNT_D,+1 projectile on every weapon.,+1 projétil em todas as armas.,+1 proyectil en todas las armas.,+1 projectile pour toutes les armes.
+META_GROWTH,Night School,Escola Noturna,Escuela Nocturna,Cours du Soir
+META_GROWTH_D,+5% experience.,+5% de experiência.,+5% de experiencia.,+5% d'expérience.
+META_GREED,Market Stall,Banca na Feira,Puesto de Mercado,Étal au Marché
+META_GREED_D,+10% coins from runs.,+10% de moedas nas partidas.,+10% de monedas por partida.,+10% de pièces par partie.
+META_MAGNET,Pocket Magnet,Ímã de Bolso,Imán de Bolsillo,Aimant de Poche
+META_MAGNET_D,+10% pickup range.,+10% de alcance de coleta.,+10% de alcance de recogida.,+10% de portée de ramassage.
+META_LUCK,Four-Leaf Clover,Trevo de 4 Folhas,Trébol de 4 Hojas,Trèfle à 4 Feuilles
+META_LUCK_D,"+5% luck: critical hits, drops and rare choices.","+5% de sorte: críticos, itens e escolhas raras.","+5% de suerte: críticos, objetos y opciones raras.","+5% de chance : critiques, butin et choix rares."
+META_REVIVE,Second Wind,Segundo Fôlego,Segundo Aliento,Second Souffle
+META_REVIVE_D,Rise once more when you fall in a run.,Levante mais uma vez ao cair em uma partida.,Levántate una vez más al caer en una partida.,Relevez-vous une fois de plus quand vous tombez.
+META_REROLL,Second Opinion,Segunda Opinião,Segunda Opinión,Deuxième Avis
+META_REROLL_D,+1 reroll for level-up choices.,+1 troca nas escolhas de nível.,+1 cambio en las opciones de nivel.,+1 relance des choix de niveau.
+META_SKIP,Not Today,Hoje Não,Hoy No,Pas Aujourd'hui
+META_SKIP_D,+1 skip for level-up choices.,+1 pulo nas escolhas de nível.,+1 salto en las opciones de nivel.,+1 passe des choix de niveau.
+META_BANISH,Compost Heap,Composteira,Compostera,Tas de Compost
+META_BANISH_D,+1 banish: remove an item from a run.,+1 banimento: remove um item da partida.,+1 destierro: quita un objeto de la partida.,+1 bannissement : retire un objet de la partie.
+CHAR_HANK,Old Hank,Velho Hank,Viejo Hank,Vieux Hank
+CHAR_HANK_D,Forty years on this land and one very sharp scythe. +10% damage.,Quarenta anos nesta terra e uma foice bem afiada. +10% de dano.,Cuarenta años en esta tierra y una guadaña muy afilada. +10% de daño.,Quarante ans sur cette terre et une faux bien affûtée. +10% de dégâts.
+CHAR_MABEL,Granny Mabel,Vovó Mabel,Abuela Mabel,Mamie Mabel
+CHAR_MABEL_D,Her salt-loaded shotgun has chased off worse. +10% area and +10 health.,A espingarda de sal dela já espantou coisa pior. +10% de área e +10 de vida.,Su escopeta de sal ya ahuyentó cosas peores. +10% de área y +10 de vida.,Son fusil à sel a déjà fait fuir pire. +10% de zone et +10 PV.
+CHAR_ROSA,Rosa the Beekeeper,Rosa Apicultora,Rosa la Apicultora,Rosa l'Apicultrice
+CHAR_ROSA_D,Her bees are immune to radiation and very cross. +20% luck and +10% speed.,Suas abelhas são imunes à radiação e estão furiosas. +20% de sorte e +10% de velocidade.,Sus abejas son inmunes a la radiación y están furiosas. +20% de suerte y +10% de velocidad.,Ses abeilles résistent aux radiations et sont furieuses. +20% de chance et +10% de vitesse.
+CHAR_TUCKER,Tucker the Mechanic,Tucker Mecânico,Tucker el Mecánico,Tucker le Mécano
+CHAR_TUCKER_D,Rebuilt the valley's last tractor with spite and baling wire. +2 armor and +20 health.,Refez o último trator do vale com raiva e arame. +2 de armadura e +20 de vida.,Reconstruyó el último tractor del valle con rabia y alambre. +2 de armadura y +20 de vida.,A retapé le dernier tracteur de la vallée avec rage et fil de fer. +2 d'armure et +20 PV.
+STAGE_1,The Back Forty,Campo dos Fundos,El Campo Trasero,Le Champ du Fond
+STAGE_1_D,Hank's own fields. The peas woke first.,Os campos do próprio Hank. As ervilhas acordaram primeiro.,Los campos de Hank. Los guisantes despertaron primero.,Les champs de Hank. Les petits pois se sont réveillés en premier.
+STAGE_2,The Glow Canal,Canal Brilhante,El Canal Brillante,Le Canal Luisant
+STAGE_2_D,The irrigation canal runs green. Everything downstream has teeth.,O canal de irrigação corre verde. Tudo rio abaixo tem dentes.,El canal de riego corre verde. Todo lo que hay aguas abajo tiene dientes.,Le canal d'irrigation coule vert. Tout ce qui est en aval a des dents.
+STAGE_3,Reactor Nine,Reator Nove,Reactor Nueve,Réacteur Neuf
+STAGE_3_D,Ground zero. Something enormous has taken root under the core.,Marco zero. Algo enorme criou raízes sob o núcleo.,Zona cero. Algo enorme ha echado raíces bajo el núcleo.,Point zéro. Quelque chose d'énorme a pris racine sous le cœur.
+BOSS_GOURD,The Gourd King,O Rei Abóbora,El Rey Calabaza,Le Roi Citrouille
+BOSS_CORN,The Corn Colossus,O Colosso de Milho,El Coloso de Maíz,Le Colosse de Maïs
+BOSS_ROOT,The Root of All Evil,A Raiz de Todo o Mal,La Raíz de Todo Mal,La Racine de Tous les Maux
+BOSS_ENRAGED,IT'S ENRAGED!,ESTÁ FURIOSO!,¡ESTÁ FURIOSO!,IL ENRAGE !
+HUD_LEVEL,Lv %d,Nv %d,Nv %d,Nv %d
+HUD_KILLS,Kills %s,Abates %s,Bajas %s,Victimes %s
+HUD_COINS,Coins %s,Moedas %s,Monedas %s,Pièces %s
+HUD_MIDBOSS,A giant is coming!,Um gigante se aproxima!,¡Se acerca un gigante!,Un géant approche !
+HUD_SWARM,Surrounded!,Cercado!,¡Rodeado!,Encerclé !
+HUD_REVIVED,Second wind!,Segundo fôlego!,¡Segundo aliento!,Second souffle !
+HUD_XPCHEST,XP chest! +%s XP,Baú de XP! +%s XP,¡Cofre de XP! +%s XP,Coffre d'XP ! +%s XP
+HUD_VICTORY,The field is clean!,O campo está limpo!,¡El campo está limpio!,Le champ est sain !
+LVL_TITLE,Level up!,Subiu de nível!,¡Subiste de nivel!,Niveau supérieur !
+LVL_NEW,New!,Novo!,¡Nuevo!,Nouveau !
+LVL_TAG,Lv %d,Nv %d,Nv %d,Nv %d
+LVL_REROLL,Reroll (%d),Trocar (%d),Cambiar (%d),Relancer (%d)
+LVL_SKIP,Skip (%d),Pular (%d),Saltar (%d),Passer (%d)
+LVL_BANISH,Banish (%d),Banir (%d),Desterrar (%d),Bannir (%d)
+LVL_BANISH_HINT,Pick an item to banish,Escolha um item para banir,Elige un objeto para desterrar,Choisissez un objet à bannir
+LVL_COINS,Bag of coins,Saco de moedas,Bolsa de monedas,Sac de pièces
+LVL_COINS_D,Everything is maxed. Take 25 coins.,Tudo no máximo. Leve 25 moedas.,Todo al máximo. Toma 25 monedas.,Tout est au maximum. Prenez 25 pièces.
+LVL_HEAL,Apple pie,Torta de maçã,Tarta de manzana,Tarte aux pommes
+LVL_HEAL_D,Restores 30 health.,Recupera 30 de vida.,Recupera 30 de vida.,Rend 30 PV.
+DELTA_DMG,+%s damage,+%s de dano,+%s de daño,+%s dégâts
+DELTA_AMOUNT,+%s projectiles,+%s projéteis,+%s proyectiles,+%s projectiles
+DELTA_AREA,+%s%% area,+%s%% de área,+%s%% de área,+%s%% de zone
+DELTA_CD,-%ss cooldown,-%ss de recarga,-%ss de recarga,-%ss de recharge
+DELTA_RATE,fires %ss faster,atira %ss mais rápido,dispara %ss más rápido,tire %ss plus vite
+DELTA_PIERCE,+%s pierce,+%s de perfuração,+%s de perforación,+%s de perforation
+DELTA_LIFE,+%ss duration,+%ss de duração,+%ss de duración,+%ss de durée
+DELTA_SPIN,+%s spin speed,+%s de giro,+%s de giro,+%s de rotation
+CHEST_TITLE,Treasure!,Tesouro!,¡Tesoro!,Trésor !
+CHEST_EVOLVED,Evolved: %s!,Evoluiu: %s!,Evolucionó: %s!,Évolution : %s !
+CHEST_LEVEL,%s reached level %d,%s chegou ao nível %d,%s llegó al nivel %d,%s atteint le niveau %d
+CHEST_COINS,%s coins,%s moedas,%s monedas,%s pièces
+PAUSE_TITLE,Paused,Pausado,Pausa,Pause
+STAT_MIGHT,Damage,Dano,Daño,Dégâts
+STAT_AREA,Area,Área,Área,Zone
+STAT_COOLDOWN,Cooldown,Recarga,Recarga,Recharge
+STAT_SPEED,Speed,Velocidade,Velocidad,Vitesse
+STAT_ARMOR,Armor,Armadura,Armadura,Armure
+STAT_REGEN,Regen,Regeneração,Regeneración,Régén.
+STAT_LUCK,Luck,Sorte,Suerte,Chance
+STAT_HP,Health,Vida,Vida,PV
+RES_WIN,Harvest saved!,Colheita salva!,¡Cosecha salvada!,Récolte sauvée !
+RES_LOSE,Composted...,Virou adubo...,Hecho abono...,Composté...
+RES_TIME,Time,Tempo,Tiempo,Temps
+RES_LEVEL,Level,Nível,Nivel,Niveau
+RES_KILLS,Kills,Abates,Bajas,Victimes
+RES_COINS,Coins,Moedas,Monedas,Pièces
+OPT_TITLE,Options,Opções,Opciones,Options
+OPT_LANGUAGE,Language: %s,Idioma: %s,Idioma: %s,Langue : %s
+OPT_MUSIC,Music,Música,Música,Musique
+OPT_SFX,Sound,Som,Sonido,Son
+OPT_FULLSCREEN,Fullscreen,Tela cheia,Pantalla completa,Plein écran
+OPT_SHAKE,Screen shake,Tremor de tela,Temblor de pantalla,Tremblement d'écran
+OPT_NUMBERS,Damage numbers,Números de dano,Números de daño,Chiffres de dégâts
+OPT_ON,On,Ligado,Activado,Activé
+OPT_OFF,Off,Desligado,Desactivado,Désactivé
+OPT_WIPE,Erase save,Apagar progresso,Borrar progreso,Effacer la sauvegarde
+OPT_WIPE_SURE,Really erase everything?,Apagar tudo mesmo?,¿Borrar todo de verdad?,Vraiment tout effacer ?
+STORY_HINT,Press Enter or click to continue,Pressione Enter ou clique para continuar,Pulsa Intro o haz clic para continuar,Appuyez sur Entrée ou cliquez pour continuer
+STORY_1,"For forty years, Hank farmed Green Hollow in peace. The valley had two things in abundance: the best soil in the county, and a nuclear plant nobody liked to talk about.","Por quarenta anos, Hank cultivou Vale Verde em paz. O vale tinha duas coisas de sobra: o melhor solo do condado e uma usina nuclear da qual ninguém gostava de falar.","Durante cuarenta años, Hank cultivó Valle Verde en paz. El valle tenía dos cosas de sobra: la mejor tierra del condado y una central nuclear de la que nadie quería hablar.","Pendant quarante ans, Hank a cultivé Val-Vert en paix. La vallée avait deux richesses : la meilleure terre du comté et une centrale nucléaire dont personne n'aimait parler."
+STORY_2,"Then, one quiet night, Reactor Nine cracked. No siren sounded. The coolant slipped out in the dark and found the irrigation canal, and the canal carried it to every farm in the valley.","Até que, numa noite calma, o Reator Nove rachou. Nenhuma sirene tocou. O líquido de resfriamento escapou no escuro, achou o canal de irrigação, e o canal o levou a todas as fazendas do vale.","Hasta que, una noche tranquila, el Reactor Nueve se agrietó. No sonó ninguna sirena. El refrigerante se escapó en la oscuridad, encontró el canal de riego y el canal lo llevó a todas las granjas del valle.","Puis, par une nuit calme, le Réacteur Neuf s'est fissuré. Aucune sirène. Le liquide de refroidissement a filé dans le noir, a trouvé le canal d'irrigation, et le canal l'a porté à toutes les fermes."
+STORY_3,"The crops drank deep. By the next full moon they had grown eyes. Then teeth. Then they stopped waiting to be harvested.","As plantações beberam até se fartar. Na lua cheia seguinte, tinham olhos. Depois, dentes. Depois, pararam de esperar pela colheita.","Los cultivos bebieron hasta saciarse. A la siguiente luna llena tenían ojos. Luego, dientes. Luego dejaron de esperar a la cosecha.","Les cultures ont bu à satiété. À la pleine lune suivante, elles avaient des yeux. Puis des dents. Puis elles ont cessé d'attendre la moisson."
+STORY_4,"The neighbours fled. The government sent a leaflet. Hank sent for his scythe. 'I planted you,' he told the field, 'and I'll be the one to bring you in.'","Os vizinhos fugiram. O governo mandou um panfleto. Hank foi buscar a foice. 'Eu plantei vocês', disse ao campo, 'e eu mesmo vou colher.'","Los vecinos huyeron. El gobierno envió un folleto. Hank fue a por su guadaña. 'Yo os planté', le dijo al campo, 'y yo os voy a cosechar.'","Les voisins ont fui. Le gouvernement a envoyé un dépliant. Hank est allé chercher sa faux. « Je vous ai plantés, dit-il au champ, et c'est moi qui vous récolterai. »"
+STORY_END_1,"The Root of All Evil came apart with a sound the whole valley felt. Under it the core lay cold at last, and the canal began, slowly, to run clear.","A Raiz de Todo o Mal se partiu com um som que o vale inteiro sentiu. Sob ela, o núcleo enfim esfriou, e o canal começou, devagar, a clarear.","La Raíz de Todo Mal se partió con un sonido que todo el valle sintió. Bajo ella, el núcleo por fin se enfrió, y el canal empezó, despacio, a aclararse.","La Racine de Tous les Maux s'est rompue dans un bruit que toute la vallée a senti. Dessous, le cœur a enfin refroidi, et le canal a lentement retrouvé sa clarté."
+STORY_END_2,"The neighbours came home. There was plenty of work to do, and the soil would need years. But for the first time since that night, Hank slept in. The sunflowers came up on their own, with no teeth at all.","Os vizinhos voltaram. Havia muito trabalho, e o solo levaria anos. Mas, pela primeira vez desde aquela noite, Hank dormiu até tarde. Os girassóis nasceram sozinhos, sem dente nenhum.","Los vecinos volvieron. Había mucho trabajo y la tierra tardaría años. Pero, por primera vez desde aquella noche, Hank durmió hasta tarde. Los girasoles brotaron solos, sin un solo diente.","Les voisins sont revenus. Il y avait du travail, et la terre mettrait des années. Mais pour la première fois depuis cette nuit-là, Hank a fait la grasse matinée. Les tournesols ont poussé tout seuls, sans la moindre dent."
+JOURNAL_0,"Day 1. The peas looked at me this morning. I do not mean that as a figure of speech. Mabel says the canal has gone the color of antifreeze, and her hens won't touch the feed. Took the scythe down from the barn wall and oiled it.","Dia 1. As ervilhas olharam para mim hoje de manhã. Não é força de expressão. Mabel diz que o canal ficou da cor de anticongelante e as galinhas dela não tocam na ração. Tirei a foice da parede do celeiro e passei óleo.","Día 1. Los guisantes me miraron esta mañana. No es una forma de hablar. Mabel dice que el canal tiene color de anticongelante y sus gallinas no tocan el pienso. Bajé la guadaña de la pared del granero y la engrasé.","Jour 1. Les petits pois m'ont regardé ce matin. Ce n'est pas une image. Mabel dit que le canal a pris la couleur de l'antigel, et ses poules ne touchent plus au grain. J'ai décroché la faux du mur de la grange et je l'ai huilée."
+JOURNAL_1,"Day 12. The Gourd King is compost. It wore a crown, which I'd like explained. The back forty is quiet. But it all drains to the canal, and so does whatever is doing this. Rosa says her bees won't leave the hive unless I point them at something. So I'll point them.","Dia 12. O Rei Abóbora virou adubo. Ele usava coroa, e eu gostaria de uma explicação. O campo dos fundos está quieto. Mas tudo escorre para o canal, assim como o que está causando isso. Rosa diz que as abelhas só saem se eu apontar um alvo. Então vou apontar.","Día 12. El Rey Calabaza ya es abono. Llevaba corona, y me gustaría una explicación. El campo trasero está tranquilo. Pero todo desagua en el canal, igual que lo que está causando esto. Rosa dice que sus abejas solo salen si les señalo algo. Así que les señalaré.","Jour 12. Le Roi Citrouille est devenu compost. Il portait une couronne, et j'aimerais qu'on m'explique. Le champ du fond est calme. Mais tout s'écoule vers le canal, tout comme ce qui cause ça. Rosa dit que ses abeilles ne sortent que si je leur montre une cible. Je vais donc leur en montrer une."
+JOURNAL_2,"Day 31. Followed the canal to the fence line of the plant. The Corn Colossus had three eyes and stood taller than the silo. Tucker's tractor went straight through it, which he has mentioned several times. The roots go down under Reactor Nine, and they are moving. All of them lead to one place.","Dia 31. Segui o canal até a cerca da usina. O Colosso de Milho tinha três olhos e era mais alto que o silo. O trator do Tucker passou direto por ele, o que Tucker já mencionou várias vezes. As raízes descem sob o Reator Nove, e estão se mexendo. Todas levam ao mesmo lugar.","Día 31. Seguí el canal hasta la valla de la central. El Coloso de Maíz tenía tres ojos y era más alto que el silo. El tractor de Tucker lo atravesó, cosa que ha mencionado varias veces. Las raíces bajan bajo el Reactor Nueve y se mueven. Todas llevan al mismo sitio.","Jour 31. J'ai suivi le canal jusqu'à la clôture de la centrale. Le Colosse de Maïs avait trois yeux et dépassait le silo. Le tracteur de Tucker l'a traversé, ce qu'il a mentionné plusieurs fois. Les racines plongent sous le Réacteur Neuf et elles bougent. Toutes mènent au même endroit."
+JOURNAL_3,"Day 60. It is over. The thing under the core had been drinking the reactor dry for weeks, and now it is ash and cold iron. The geiger counter ticks a little slower each morning. There may still be strays out in the fields, and the hot spots will flare up for years. I'll keep the scythe oiled. But the sunflowers are back.","Dia 60. Acabou. A coisa sob o núcleo vinha bebendo o reator havia semanas, e agora é cinza e ferro frio. O contador Geiger fica um pouco mais lento a cada manhã. Talvez ainda haja mutantes soltos nos campos, e os focos quentes vão voltar por anos. Vou manter a foice azeitada. Mas os girassóis voltaram.","Día 60. Se acabó. Lo que había bajo el núcleo llevaba semanas bebiéndose el reactor, y ahora es ceniza y hierro frío. El contador Geiger va un poco más lento cada mañana. Quizá queden mutantes por los campos, y los focos calientes volverán durante años. Mantendré la guadaña engrasada. Pero los girasoles han vuelto.","Jour 60. C'est fini. La chose sous le cœur buvait le réacteur depuis des semaines, et elle n'est plus que cendre et fer froid. Le compteur Geiger ralentit un peu chaque matin. Il reste peut-être des mutants dans les champs, et les points chauds reviendront pendant des années. Je garderai la faux huilée. Mais les tournesols sont revenus."
+WPN_SCYTHE,Scythe,Foice,Guadaña,Faux
+WPN_SCYTHE_D,Sweeps a wide arc in front of you.,Corta um arco amplo à sua frente.,Barre un amplio arco frente a ti.,Fauche un large arc devant vous.
+WPN_PITCHFORK,Pitchfork,Forcado,Horca,Fourche
+WPN_PITCHFORK_D,Thrown at the nearest mutant. Pierces.,Lançado no mutante mais próximo. Perfura.,Se lanza al mutante más cercano. Perfora.,Lancée sur le mutant le plus proche. Perce.
+WPN_SHOTGUN,Salt Shotgun,Espingarda de Sal,Escopeta de Sal,Fusil à Sel
+WPN_SHOTGUN_D,A short-range cone of rock salt.,Um cone de sal grosso de curto alcance.,Un cono de sal gruesa de corto alcance.,Un cône de gros sel à courte portée.
+WPN_SICKLES,Whirling Sickles,Foices Giratórias,Hoces Giratorias,Faucilles Tournoyantes
+WPN_SICKLES_D,Blades orbit around you.,Lâminas orbitam ao seu redor.,Las hojas orbitan a tu alrededor.,Des lames tournent autour de vous.
+WPN_BEES,Angry Bees,Abelhas Bravas,Abejas Furiosas,Abeilles Furieuses
+WPN_BEES_D,Bees hunt down nearby mutants.,Abelhas caçam os mutantes próximos.,Las abejas cazan a los mutantes cercanos.,Les abeilles traquent les mutants proches.
+WPN_WEEDKILLER,Weed Killer,Mata-Mato,Herbicida,Désherbant
+WPN_WEEDKILLER_D,Leaves a pool that burns anything inside.,Deixa uma poça que queima tudo dentro.,Deja un charco que quema todo lo que hay dentro.,Laisse une flaque qui brûle tout ce qui s'y trouve.
+WPN_TRACTOR,Runaway Tractor,Trator Desgovernado,Tractor Desbocado,Tracteur Fou
+WPN_TRACTOR_D,Plows across the whole screen.,Atravessa a tela inteira arando tudo.,Arrasa toda la pantalla.,Laboure tout l'écran.
+WPN_LIGHTNING,Weather Vane,Cata-Vento,Veleta,Girouette
+WPN_LIGHTNING_D,Calls lightning on random mutants.,Chama raios sobre mutantes aleatórios.,Atrae rayos sobre mutantes al azar.,Attire la foudre sur des mutants au hasard.
+WPN_SCARECROW,Scarecrow,Espantalho,Espantapájaros,Épouvantail
+WPN_SCARECROW_D,Plants a turret that fires at mutants.,Planta uma torre que atira nos mutantes.,Planta una torreta que dispara a los mutantes.,Plante une tourelle qui tire sur les mutants.
+EVO_SCYTHE,Reaper's Harvest,Colheita do Ceifador,Cosecha del Segador,Moisson du Faucheur
+EVO_PITCHFORK,Trident of the Plains,Tridente das Planícies,Tridente de las Llanuras,Trident des Plaines
+EVO_SHOTGUN,Lucky Buckshot,Chumbo da Sorte,Perdigones de la Suerte,Chevrotine Porte-Bonheur
+EVO_SICKLES,Blade Tornado,Tornado de Lâminas,Tornado de Cuchillas,Tornade de Lames
+EVO_BEES,Queen's Swarm,Enxame da Rainha,Enjambre de la Reina,Essaim de la Reine
+EVO_WEEDKILLER,Scorched Earth,Terra Arrasada,Tierra Quemada,Terre Brûlée
+EVO_TRACTOR,Combine Harvester,Colheitadeira,Cosechadora,Moissonneuse-Batteuse
+EVO_LIGHTNING,The Perfect Storm,A Tempestade Perfeita,La Tormenta Perfecta,La Tempête Parfaite
+EVO_SCARECROW,Straw Sentinel,Sentinela de Palha,Centinela de Paja,Sentinelle de Paille
+PAS_HAT,Wide-Brim Hat,Chapéu de Aba Larga,Sombrero de Ala Ancha,Chapeau à Larges Bords
+PAS_HAT_D,+10% attack area.,+10% de área de ataque.,+10% de área de ataque.,+10% de zone d'attaque.
+PAS_BOOTS,Work Boots,Botas de Trabalho,Botas de Trabajo,Bottes de Travail
+PAS_BOOTS_D,+8% movement speed.,+8% de velocidade.,+8% de velocidad.,+8% de vitesse.
+PAS_GLOVES,Leather Gloves,Luvas de Couro,Guantes de Cuero,Gants de Cuir
+PAS_GLOVES_D,-8% weapon cooldown.,-8% de recarga das armas.,-8% de recarga de armas.,-8% de recharge des armes.
+PAS_ALMANAC,Farmer's Almanac,Almanaque Rural,Almanaque Rural,Almanach du Fermier
+PAS_ALMANAC_D,+12% experience.,+12% de experiência.,+12% de experiencia.,+12% d'expérience.
+PAS_WHETSTONE,Whetstone,Pedra de Amolar,Piedra de Afilar,Pierre à Aiguiser
+PAS_WHETSTONE_D,+10% damage.,+10% de dano.,+10% de daño.,+10% de dégâts.
+PAS_LUNCHBOX,Lunchbox,Marmita,Fiambrera,Gamelle
+PAS_LUNCHBOX_D,+20 maximum health.,+20 de vida máxima.,+20 de vida máxima.,+20 PV maximum.
+PAS_HORSESHOE,Horseshoe Magnet,Ferradura Imantada,Herradura Imantada,Fer à Cheval Aimanté
+PAS_HORSESHOE_D,+40% pickup range.,+40% de alcance de coleta.,+40% de alcance de recogida.,+40% de portée de ramassage.
+PAS_THERMOS,Coffee Thermos,Garrafa de Café,Termo de Café,Thermos de Café
+PAS_THERMOS_D,Recover 0.5 health per second.,Recupera 0.5 de vida por segundo.,Recupera 0.5 de vida por segundo.,Récupère 0.5 PV par seconde.
+PAS_OVERALLS,Patched Overalls,Macacão Remendado,Peto Remendado,Salopette Rapiécée
+PAS_OVERALLS_D,Reduces damage taken by 1.,Reduz em 1 o dano recebido.,Reduce en 1 el daño recibido.,Réduit de 1 les dégâts subis.
+PAS_CLOVER,Lucky Clover,Trevo da Sorte,Trébol de la Suerte,Trèfle Porte-Bonheur
+PAS_CLOVER_D,+15% luck.,+15% de sorte.,+15% de suerte.,+15% de chance.
+HUB_CLEARED,Cleared,Vencido,Superado,Terminé
+HUB_GOAL_DONE,Field cleared! Replay it for coins or raise the Radiation.,Campo vencido! Jogue de novo por moedas ou aumente a Radiação.,¡Campo superado! Rejuega por monedas o sube la Radiación.,Champ terminé ! Rejouez pour des pièces ou montez la Radiation.
+HUB_RAD_WHAT,"Radiation is an optional challenge: mutants get tougher and more numerous, but pay more coins.","Radiação é um desafio opcional: os mutantes ficam mais fortes e numerosos, mas rendem mais moedas.","La Radiación es un reto opcional: los mutantes son más fuertes y numerosos, pero dan más monedas.","La Radiation est un défi optionnel : mutants plus forts et plus nombreux, mais plus de pièces."
+HUB_RAD_D,"Now: enemy HP %d%%, damage %d%%, coins %d%%.","Agora: vida inimiga %d%%, dano %d%%, moedas %d%%.","Ahora: vida enemiga %d%%, daño %d%%, monedas %d%%.","Actuel : PV ennemis %d%%, dégâts %d%%, pièces %d%%."
+HUB_RAD_NEXT,"Level 1: enemy HP %d%%, damage %d%%, coins %d%%.","Nível 1: vida inimiga %d%%, dano %d%%, moedas %d%%.","Nivel 1: vida enemiga %d%%, daño %d%%, monedas %d%%.","Niveau 1 : PV ennemis %d%%, dégâts %d%%, pièces %d%%."
+HUB_RAD_UNLOCK,Clear this field at Radiation %d to unlock Radiation %d.,Vença este campo na Radiação %d para liberar a Radiação %d.,Supera este campo en Radiación %d para desbloquear Radiación %d.,Terminez ce champ en Radiation %d pour débloquer Radiation %d.
+RES_UNLOCK_STAGE,New field unlocked: %s!,Novo campo liberado: %s!,Nuevo campo desbloqueado: %s!,Nouveau champ débloqué : %s !
+RES_UNLOCK_RAD,Radiation %d unlocked for this field!,Radiação %d liberada neste campo!,¡Radiación %d desbloqueada en este campo!,Radiation %d débloquée pour ce champ !
+HUB_LOCKED_BY,Locked - boss: %s,Bloqueado - chefe: %s,Bloqueado - jefe: %s,Verrouillé - boss : %s
+HUB_GOAL_NEXT,Boss: %s (arrives at %s). Beat it to unlock %s.,Chefe: %s (chega aos %s). Vença para liberar %s.,Jefe: %s (llega a los %s). Véncelo para desbloquear %s.,Boss : %s (arrive à %s). Battez-le pour débloquer %s.
+HUB_GOAL_LAST,Boss: %s (arrives at %s). Beat it to save the valley.,Chefe: %s (chega aos %s). Vença para salvar o vale.,Jefe: %s (llega a los %s). Véncelo para salvar el valle.,Boss : %s (arrive à %s). Battez-le pour sauver la vallée.
+RES_HINT_LOSE,Boss: %s (at %s). Beat it to unlock the next field.,Chefe: %s (aos %s). Vença para liberar o próximo campo.,Jefe: %s (a los %s). Véncelo para desbloquear el siguiente campo.,Boss : %s (à %s). Battez-le pour débloquer le champ suivant.
