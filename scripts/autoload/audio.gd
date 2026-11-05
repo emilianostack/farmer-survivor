@@ -4,12 +4,15 @@ extends Node
 const SFX := ["hit", "kill", "pickup", "coin", "levelup", "hurt", "shoot", "slash", "boom", "zap", "chest", "ui", "buy", "boss", "win", "lose", "bee", "tractor"]
 const VOICES := 14
 const MIN_GAP := 0.045
+## Per-sound trims in dB, measured so every effect sits at a similar loudness.
+const TRIM := {"boss": -4.0, "slash": 3.0, "shoot": 1.5}
 
 var streams := {}
 var players: Array[AudioStreamPlayer] = []
 var last_play := {}
 var music: AudioStreamPlayer
 var current_track := ""
+var sfx_db := 0.0
 var positions := {}
 
 
@@ -33,8 +36,9 @@ func apply_volumes() -> void:
 		return
 	var s: Dictionary = Save.d.settings
 	music.volume_db = linear_to_db(maxf(float(s.music) * 0.6, 0.0001))
+	sfx_db = linear_to_db(maxf(float(s.sfx) * 0.7, 0.0001))
 	for p in players:
-		p.volume_db = linear_to_db(maxf(float(s.sfx) * 0.7, 0.0001))
+		p.volume_db = sfx_db
 
 
 func play(id: String, pitch_var: float = 0.08) -> void:
@@ -47,6 +51,7 @@ func play(id: String, pitch_var: float = 0.08) -> void:
 	for p in players:
 		if not p.playing:
 			p.stream = streams[id]
+			p.volume_db = sfx_db + float(TRIM.get(id, 0.0))
 			p.pitch_scale = randf_range(1.0 - pitch_var, 1.0 + pitch_var)
 			p.play()
 			return

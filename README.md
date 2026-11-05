@@ -10,7 +10,12 @@ crops of Green Hollow, and old Hank is taking up his scythe.
 **Run locally:** run `build/FarmerSurvivors.exe`, or open this folder in Godot 4.7 and press F5.
 
 **Controls:** WASD, arrow keys or gamepad to move, or drag on a touchscreen. Weapons fire on their own.
-Esc, P or the on-screen button pauses. Enter, Space, mouse or touch work in menus.
+P or the on-screen II button pauses (Esc too, outside the browser: there Esc leaves fullscreen).
+The run also pauses when the tab loses focus. Enter, Space, mouse or touch work in menus.
+Movement uses physical key positions, so ZQSD works on AZERTY keyboards.
+
+**First play:** Play drops a new player straight into a run, with the controls drawn on
+screen for the first two runs. The intro story comes after the first run and can be skipped.
 
 **Languages:** English (default), Português (Brasil), Español, Français. Switch in
 Options. Text lives in `i18n/strings.csv`: add a column to add a language, then list it in

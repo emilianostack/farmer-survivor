@@ -62,6 +62,7 @@ class Story extends Control:
 	var image: TextureRect
 	var text: Label
 	var hint: Label
+	var skip: Button
 
 	func _init(p_slides: Array) -> void:
 		slides = p_slides
@@ -88,6 +89,10 @@ class Story extends Control:
 		hint.size = Vector2(612, 16)
 		hint.add_theme_constant_override("outline_size", 3)
 		add_child(hint)
+		skip = UI.button(tr("BTN_SKIP"), func(): done.emit(), Vector2(64, 22))
+		skip.position = Vector2(640 - 8 - skip.custom_minimum_size.x, 8)
+		skip.focus_mode = Control.FOCUS_NONE  # Enter keeps advancing the slides
+		add_child(skip)
 		_show()
 
 	func _show() -> void:
@@ -108,6 +113,8 @@ class Story extends Control:
 		var pressed: bool = e.is_action_pressed("ui_accept") or (e is InputEventMouseButton and e.pressed)
 		if not pressed:
 			return
+		if e is InputEventMouseButton and skip.get_global_rect().has_point(e.position):
+			return  # the Skip button takes this click
 		get_viewport().set_input_as_handled()
 		if text.visible_characters < text.text.length():
 			shown = 99999.0

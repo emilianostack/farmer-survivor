@@ -19,6 +19,8 @@ func _ready() -> void:
 	ui_layer = CanvasLayer.new()
 	ui_layer.layer = 5
 	add_child(ui_layer)
+	if OS.has_feature("web"):
+		_free_browser_keys()
 	var args := OS.get_cmdline_user_args()
 	for a in args:
 		if a.begins_with("--dev="):
@@ -27,6 +29,14 @@ func _ready() -> void:
 			harness.begin(self, a.substr(6))
 			return
 	show_title()
+
+
+## In a browser Esc leaves fullscreen, so it must not also pause the game.
+## P and the on-screen button pause instead. Menus still close with Esc.
+func _free_browser_keys() -> void:
+	for e in InputMap.action_get_events("pause"):
+		if e is InputEventKey and (e.physical_keycode == KEY_ESCAPE or e.keycode == KEY_ESCAPE):
+			InputMap.action_erase_event("pause", e)
 
 
 func _swap(n: Node) -> void:
@@ -44,14 +54,24 @@ func show_title() -> void:
 	_swap(t)
 
 
+## A new player is playing within a second of pressing Play: the first run starts at
+## once, with the controls drawn on screen. The intro story waits until after it.
 func _on_play() -> void:
-	if not Save.d.seen_intro:
-		show_story(INTRO, func():
-			Save.d.seen_intro = true
-			Save.save_game()
-			show_hub())
+	if int(Save.d.runs) == 0 and not Save.d.seen_intro:
+		start_run(0, 0, String(Save.d.selected_char))
 	else:
+		show_farm()
+
+
+## The hub, with the intro story in front of it the first time. The story can be skipped.
+func show_farm() -> void:
+	if Save.d.seen_intro:
 		show_hub()
+		return
+	show_story(INTRO, func():
+		Save.d.seen_intro = true
+		Save.save_game()
+		show_hub())
 
 
 func show_story(slides: Array, next: Callable) -> void:
@@ -104,7 +124,7 @@ func _on_run_ended(r: Dictionary) -> void:
 		if first_final:
 			show_story(ENDING, show_hub)
 		else:
-			show_hub())
+			show_farm())
 	_swap(res)
 
 

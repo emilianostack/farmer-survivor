@@ -18,6 +18,10 @@ var overlay: Control = null
 var _banner_tween: Tween
 var danger_rect: ColorRect
 var stick: TouchStick = null
+var pause_button: Button
+var hint: Control = null
+var hint_age := 0.0
+var hint_moved := 0.0
 
 
 func setup(r: Node2D) -> void:
@@ -74,21 +78,137 @@ func setup(r: Node2D) -> void:
 	banner_label.size = Vector2(640, 44)
 	banner_label.modulate.a = 0.0
 	root.add_child(banner_label)
+	# On-screen pause for every player: in a browser Esc leaves fullscreen instead.
+	pause_button = UI.button("II", func():
+		if _can_pause():
+			open_pause(), Vector2(26, 26))
+	pause_button.position = Vector2(4, 32)
+	pause_button.focus_mode = Control.FOCUS_NONE
+	root.add_child(pause_button)
 	if UI.is_touch():
 		enable_touch()
+	if int(Save.d.runs) < 2 and not run.bot:
+		hint = ControlsHint.new()
+		hint.touch = UI.is_touch()
+		hint.goal = tr("HINT_GOAL") % UI.time_str(DB.STAGE_LENGTH)
+		root.add_child(hint)
 
 
-## Steering stick and an on-screen pause, for devices with no keyboard.
+## Steering stick for devices with no keyboard. The pause button grows to finger size.
 func enable_touch() -> void:
 	stick = TouchStick.new()
 	root.add_child(stick)
-	var pause := UI.button("II", func():
-		if overlay == null and not run.finished and run.win_timer < 0.0:
-			open_pause(), Vector2(34, 34))
-	pause.position = Vector2(4, 32)
-	pause.focus_mode = Control.FOCUS_NONE
-	root.add_child(pause)
-	stick.blocked.append(pause)
+	pause_button.custom_minimum_size = Vector2(34, 34)
+	root.move_child(pause_button, -1)
+	stick.blocked.append(pause_button)
+
+
+func _can_pause() -> bool:
+	return overlay == null and not run.finished and run.win_timer < 0.0
+
+
+## A browser tab that loses focus pauses the run, so nobody dies while away.
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_APPLICATION_FOCUS_OUT and run != null and not run.bot and _can_pause():
+		open_pause()
+
+
+## Fades the first-run controls help once the player has clearly got the hang of moving.
+func tick_hint(dt: float, moving: bool) -> void:
+	if hint == null:
+		return
+	hint_age += dt
+	if moving:
+		hint_moved += dt
+	if hint_moved > 2.5 or hint_age > 15.0:
+		var h := hint
+		hint = null
+		var tw := create_tween()
+		tw.tween_property(h, "modulate:a", 0.0, 0.6)
+		tw.tween_callback(h.queue_free)
+
+
+## First-run help. The keys are drawn as keycaps, in the player's own keyboard layout.
+class ControlsHint extends Control:
+	const INK := Color("2a1a14")
+	const CAP := Color("f4ecd8")
+	var touch := false
+	var goal := ""
+
+	var names := {}
+
+	func _ready() -> void:
+		mouse_filter = Control.MOUSE_FILTER_IGNORE
+		size = Vector2(300, 82)
+		position = Vector2((640 - size.x) / 2.0, 236)
+		for k in [KEY_W, KEY_A, KEY_S, KEY_D, KEY_P]:
+			names[k] = key_name(k)
+
+	## What is printed on the key at this position, e.g. Z instead of W on AZERTY.
+	static func key_name(physical: Key) -> String:
+		var native := DisplayServer.get_name() in ["Windows", "macOS", "X11", "Wayland"]
+		if native:
+			var s := OS.get_keycode_string(DisplayServer.keyboard_get_keycode_from_physical(physical))
+			if s.length() == 1:
+				return s
+		elif OS.get_locale().replace("-", "_") in ["fr", "fr_FR", "fr_BE"]:  # browsers do not tell; AZERTY is the likely layout
+			match physical:
+				KEY_W: return "Z"
+				KEY_A: return "Q"
+		return OS.get_keycode_string(physical)
+
+	## The keys a player presses show the real layout: fix the keycaps to match.
+	func _input(e: InputEvent) -> void:
+		var k := e as InputEventKey
+		if k == null or not k.pressed or not names.has(k.physical_keycode):
+			return
+		var s := OS.get_keycode_string(k.key_label if k.key_label != KEY_NONE else k.keycode)
+		if s.length() == 1 and s != names[k.physical_keycode]:
+			names[k.physical_keycode] = s
+			queue_redraw()
+
+	func _cap(at: Vector2, txt: String, arrow: float = NAN) -> void:
+		var r := Rect2(at, Vector2(15, 15))
+		draw_rect(r.grow(1), Color("140c1c"))
+		draw_rect(r, CAP)
+		draw_rect(Rect2(at + Vector2(0, 12), Vector2(15, 3)), UI.COL_MUTED)
+		if is_nan(arrow):
+			draw_string(UI.body_font(), at + Vector2(0, 11), txt, HORIZONTAL_ALIGNMENT_CENTER, 15, 16, INK)
+		else:
+			var c := at + Vector2(7.5, 6.0)
+			var pts := PackedVector2Array([Vector2(3.5, 0), Vector2(-2.5, -3.5), Vector2(-2.5, 3.5)])
+			for i in pts.size():
+				pts[i] = c + pts[i].rotated(arrow)
+			draw_colored_polygon(pts, INK)
+
+	func _text(at: Vector2, txt: String, col: Color, align := HORIZONTAL_ALIGNMENT_LEFT, w := -1.0) -> void:
+		var f := UI.body_font()
+		for o in [Vector2(-1, 0), Vector2(1, 0), Vector2(0, -1), Vector2(0, 1)]:
+			draw_string(f, at + o, txt, align, w, 16, Color("140c1c"))
+		draw_string(f, at, txt, align, w, 16, col)
+
+	func _draw() -> void:
+		draw_rect(Rect2(Vector2.ZERO, size), Color(0.04, 0.03, 0.08, 0.72))
+		if touch:
+			var c := Vector2(30, 22)
+			draw_arc(c, 13, 0, TAU, 24, CAP, 2.0)
+			draw_circle(c + Vector2(6, -3), 5, UI.COL_GOLD)
+			_text(Vector2(52, 27), tr("HINT_DRAG"), UI.COL_TEXT)
+		else:
+			_cap(Vector2(24, 4), names[KEY_W])
+			_cap(Vector2(7, 21), names[KEY_A])
+			_cap(Vector2(24, 21), names[KEY_S])
+			_cap(Vector2(41, 21), names[KEY_D])
+			_text(Vector2(61, 29), "/", UI.COL_MUTED)
+			_cap(Vector2(87, 4), "", -PI / 2.0)
+			_cap(Vector2(70, 21), "", PI)
+			_cap(Vector2(87, 21), "", PI / 2.0)
+			_cap(Vector2(104, 21), "", 0.0)
+			_text(Vector2(126, 29), tr("HINT_MOVE"), UI.COL_TEXT)
+			_cap(Vector2(206, 21), names[KEY_P])
+			_text(Vector2(226, 29), tr("HINT_PAUSE"), UI.COL_TEXT)
+		_text(Vector2(0, 56), tr("HINT_AUTO"), UI.COL_TEXT, HORIZONTAL_ALIGNMENT_CENTER, size.x)
+		_text(Vector2(0, 74), goal, UI.COL_GOLD, HORIZONTAL_ALIGNMENT_CENTER, size.x)
 
 
 func touch_dir() -> Vector2:
@@ -144,7 +264,7 @@ func is_busy() -> bool:
 
 func _unhandled_input(e: InputEvent) -> void:
 	if e.is_action_pressed("pause"):
-		if overlay == null and not run.finished and run.win_timer < 0.0:
+		if _can_pause():
 			open_pause()
 			get_viewport().set_input_as_handled()
 		elif overlay != null and overlay.has_meta("pause"):

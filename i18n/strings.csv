@@ -9,6 +9,7 @@ BTN_START,Head out!,Partir!,¡En marcha!,En route !
 BTN_CONTINUE,Continue,Continuar,Continuar,Continuer
 BTN_RESUME,Resume,Retomar,Reanudar,Reprendre
 BTN_GIVEUP,Give up (keep coins),Desistir (manter moedas),Rendirse (conservar monedas),Abandonner (garder les pièces)
+BTN_SKIP,Skip,Pular,Saltar,Passer
 TAB_EXPEDITION,Expedition,Expedição,Expedición,Expédition
 TAB_WORKSHOP,Workshop,Oficina,Taller,Atelier
 TAB_FARM,Farm,Fazenda,Granja,Ferme
@@ -92,6 +93,11 @@ HUD_SWARM,Surrounded!,Cercado!,¡Rodeado!,Encerclé !
 HUD_REVIVED,Second wind!,Segundo fôlego!,¡Segundo aliento!,Second souffle !
 HUD_XPCHEST,XP chest! +%s XP,Baú de XP! +%s XP,¡Cofre de XP! +%s XP,Coffre d'XP ! +%s XP
 HUD_VICTORY,The field is clean!,O campo está limpo!,¡El campo está limpio!,Le champ est sain !
+HINT_MOVE,Move,Mover,Moverse,Bouger
+HINT_DRAG,Drag anywhere to move,Arraste em qualquer lugar para mover,Arrastra en cualquier lugar para moverte,Glissez n'importe où pour bouger
+HINT_PAUSE,Pause,Pausar,Pausa,Pause
+HINT_AUTO,Your weapons fire on their own,Suas armas atacam sozinhas,Tus armas atacan solas,Vos armes tirent toutes seules
+HINT_GOAL,Survive until %s and beat the boss,Sobreviva até %s e vença o chefe,Sobrevive hasta el %s y vence al jefe,Survivez jusqu'à %s et battez le boss
 LVL_TITLE,Level up!,Subiu de nível!,¡Subiste de nivel!,Niveau supérieur !
 LVL_NEW,New!,Novo!,¡Nuevo!,Nouveau !
 LVL_TAG,Lv %d,Nv %d,Nv %d,Nv %d

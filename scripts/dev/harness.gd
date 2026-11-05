@@ -142,6 +142,13 @@ func _shots() -> void:
 	await _snap("06b_danger")
 	r.hp = float(r.stats.max_hp)
 	await _wait(3)
+	var help = preload("res://scripts/game/hud.gd").ControlsHint.new()
+	help.touch = UI.force_touch
+	help.goal = tr("HINT_GOAL") % UI.time_str(DB.STAGE_LENGTH)
+	r.hud.root.add_child(help)
+	await _wait(3)
+	await _snap("06c_controls")
+	help.queue_free()
 	r.bot = false
 	r.hud._show_level_up(r.hud._options())
 	await _wait(6)
@@ -338,7 +345,15 @@ func _touch() -> void:
 	await _finger(0, center, true)
 	await _finger(0, center, false)
 	await _wait(4)
-	_ok(main.current is Screens.Story, "tapping Play starts the story")
+	_ok(main.run != null, "tapping Play starts a run")
+	_ok(main.run.hud.hint != null and main.run.hud.hint.touch, "the controls help shows the touch stick")
+	main.run.give_up()
+	await _wait(4)
+	var cont: Button = main.current.find_children("*", "Button", true, false)[0]
+	await _finger(0, cont.get_global_rect().get_center(), true)
+	await _finger(0, cont.get_global_rect().get_center(), false)
+	await _wait(4)
+	_ok(main.current is Screens.Story, "the story follows the first run")
 	_ok(main.current.hint.text == tr("STORY_HINT_TOUCH"), "story hint talks about tapping")
 	for i in 12:
 		if not (main.current is Screens.Story):
@@ -413,25 +428,21 @@ func _flow() -> void:
 	_ok(TranslationServer.get_locale().begins_with("en"), "starts in English")
 	_ok(tr("BTN_PLAY") == "Play", "translations load")
 	await _press("ui_accept")
-	await _wait(4)
-	_ok(main.current is Screens.Story, "Play on a new save opens the story")
-	for i in 12:
-		if not (main.current is Screens.Story):
-			break
-		await _press("ui_accept")
 	await _wait(6)
-	_ok(main.current != null and not (main.current is Screens.Story), "story advances to the hub")
-	_ok(Save.d.seen_intro, "intro is only shown once")
-	await _wait(6)
-	await _press("ui_accept")
-	await _wait(6)
-	_ok(main.run != null, "Head out starts a run")
+	_ok(main.run != null and not (main.current is Screens.Story), "Play on a new save starts a run at once")
 	var r = main.run
+	_ok(r.hud.hint != null, "the first run shows the controls")
+	_ok(r.hud.pause_button.is_visible_in_tree(), "a mouse player has an on-screen pause button")
 	Input.action_press("move_right")
 	await _wait(40)
 	Input.action_release("move_right")
 	_ok(r.player_pos.x > 20.0, "move input walks the farmer")
 	_ok(r.player.flip_h == false and r.facing == 1.0, "faces the walk direction")
+	_ok(r.hud.hint != null, "the controls stay up for a short walk")
+	Input.action_press("move_down")
+	await _wait(150)
+	Input.action_release("move_down")
+	_ok(r.hud.hint == null, "the controls fade once the player is moving")
 	await _press("pause")
 	await _wait(4)
 	_ok(get_tree().paused and r.hud.overlay != null, "Esc pauses")
@@ -473,6 +484,27 @@ func _flow() -> void:
 	r.hurt(999.0)
 	await _wait(6)
 	_ok(main.run == null, "dying ends the run")
+	await _press("ui_accept")
+	await _wait(6)
+	_ok(main.current is Screens.Story, "the intro story follows the first run")
+	main.current.skip.pressed.emit()
+	await _wait(6)
+	_ok(main.current != null and not (main.current is Screens.Story), "Skip leaves the story for the hub")
+	_ok(Save.d.seen_intro, "intro is only shown once")
+	await _press("ui_accept")
+	await _wait(6)
+	_ok(main.run != null, "Head out starts a run")
+	_ok(main.run.hud.hint != null, "the second run still shows the controls")
+	main.run.give_up()
+	await _wait(4)
+	await _press("ui_accept")
+	await _wait(6)
+	_ok(not (main.current is Screens.Story), "the story is not shown again")
+	main.current.start_run.emit(0, 0, "hank")
+	await _wait(6)
+	_ok(main.run != null and main.run.hud.hint == null, "the third run has no controls help")
+	main.run.give_up()
+	await _wait(4)
 	print("flow fails=", fails, " coins=", Save.d.coins)
 	get_tree().quit()
 
@@ -1122,7 +1154,15 @@ func _covers() -> void:
 
 
 ## Real bot gameplay for preview videos, run with --write-movie. Nothing is sped up.
+## --dev=trailer[:<stage>:<char>:<start seconds, or "boss">:<length>:<weapon,weapon>]
 func _trailer() -> void:
+	var stage := int(arg[1]) if arg.size() > 1 else 1
+	var ch: String = arg[2] if arg.size() > 2 else "hank"
+	var start := 300.0
+	if arg.size() > 3:
+		start = DB.STAGE_LENGTH - 2.0 if arg[3] == "boss" else float(arg[3])
+	var length := float(arg[4]) if arg.size() > 4 else 19.0
+	var weapons := arg[5].split(",") if arg.size() > 5 else PackedStringArray(["scythe", "bees", "lightning", "tractor", "sickles"])
 	seed(2026)
 	Save.d = Save._default()
 	Save.d.seen_intro = true
@@ -1132,15 +1172,15 @@ func _trailer() -> void:
 	Save.d.settings.music = 0.0
 	Save.d.settings.sfx = 0.0
 	Save.apply_settings()
-	main.start_run(1, 0, "hank", true)
+	main.start_run(stage, 0, ch, true)
 	var r = main.run
-	r.time = 300.0
+	r.time = start
 	r.next_elite = r.time + 6.0
 	r.next_swarm = r.time + 3.0
 	r.wave_i = 0
 	r.level = 22
 	r.xp_next = 99999.0
-	for id in ["scythe", "bees", "lightning", "tractor", "sickles"]:
+	for id in weapons:
 		if r.weapons.has_weapon(id) == null:
 			r.weapons.add_weapon(id)
 	for s in r.weapons.slots:
@@ -1151,7 +1191,7 @@ func _trailer() -> void:
 	r.hud.refresh_items()
 	for i in 90:
 		r.enemies.spawn(r.stage.waves[-1].pool.pick_random(), r.player_pos + Vector2.from_angle(randf() * TAU) * randf_range(120.0, 300.0))
-	var left := 19.0
+	var left := length
 	while left > 0.0 and main.run != null:
 		r.hp = float(r.stats.max_hp) * 0.82
 		left -= get_process_delta_time()

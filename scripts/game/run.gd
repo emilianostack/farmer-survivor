@@ -258,6 +258,7 @@ func _player(dt: float) -> void:
 		spd *= 0.55
 	player_pos += dir * spd * dt
 	var moving := dir.length_squared() > 0.01
+	hud.tick_hint(dt, moving)
 	if moving:
 		facing_vec = dir.normalized()
 		if absf(dir.x) > 0.1:
